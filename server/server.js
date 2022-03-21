@@ -1,10 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const passport = require("passport");
 
 //Routes Import
 const users = require("./routes/api/user");
 const profiles = require("./routes/api/profile");
 const posts = require("./routes/api/post");
+const { json } = require("body-parser");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,7 +18,12 @@ mongoose
   .then(() => console.log("DB connected..."))
   .catch((err) => console.log(err));
 
-//Middlewares inits
+//----------Middleware JSON Parser
+app.use(express.json());
+
+//----------Passport Middleware
+app.use(passport.initialize());
+require("./config/passport")(passport);
 
 //Routes Initialization
 app.use("/api/users", users);
