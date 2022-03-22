@@ -1,4 +1,5 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 
@@ -19,6 +20,7 @@ mongoose
   .catch((err) => console.log(err));
 
 //----------Middleware JSON Parser
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 
 //----------Passport Middleware

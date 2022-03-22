@@ -1,10 +1,12 @@
 const express = require("express");
-const User = require("../../model/User");
 const keys = require("../../config/keys");
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
+
+//Models
+const User = require("../../model/User");
 
 //Validators
 const validateRegisterInput = require("../../validation/register");
@@ -52,7 +54,7 @@ router.post("/register", (req, res, next) => {
                 res.status(201).json(user);
               })
               .catch((err) => {
-                console.log(err);
+                res.status(400).json(err);
               });
           }
         });
