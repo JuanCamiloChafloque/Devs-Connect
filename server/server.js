@@ -33,7 +33,7 @@ app.use("/api/users", users);
 app.use("/api/profile", profiles);
 app.use("/api/posts", posts);
 
-//Server static assets if in production
+//Server static assets if is in production
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/build"));
   app.get("*", (req, res) => {
