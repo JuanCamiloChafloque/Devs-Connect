@@ -43,7 +43,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-//Listening middleware
+//Listening middlewares
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
 });
